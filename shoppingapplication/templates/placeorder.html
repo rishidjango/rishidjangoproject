@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+{% load billing %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+<style >
+div{
+  background-color:green;
+  color:yellow;
+}
+  h2{
+    background-color:black;
+    color:white;
+  }
+</style>
+  </head>
+  <body>
+    <img src="http://127.0.0.1:8000/static/images/test.jpg" alt="Sorry the image is unavailable">
+    <div >
+
+    <h1>Hello Mr. {{user_name}}</h1>
+    <p>Thankyou for placing order with us.You will recieve your order soon.
+    </p>
+  <u><h3>Your invoice is </h3></u>
+
+
+  <ol>
+<li>Product   Quantity   Cost</li>
+
+  {%for x in cart_items%}
+
+<li>{{x.gname}} x {{x.gquantity}} = {% mul x.gquantity x.gprice %}</li>
+{% endfor %}
+
+</ol>
+</div>
+
+<h2>Total Cost:{{total_sum}}</h2>
+<h4>Thankyou</h4>
+
+  </body>
+</html>

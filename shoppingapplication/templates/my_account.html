@@ -1,0 +1,31 @@
+{%extends "home.html" %}
+{% block account_cart %}
+<div class="">
+
+<h1>Your cart contains</h1>
+{%if flag%}
+<h2>Item item added succesfully</h2>
+
+{%else%}
+<h1>Sorry the is not available currently </h1>
+{%endif%}
+{%for x in cart_items%}
+
+<h2>{{x.gname}}  {{x.gprice}}  {{x.gquantity}}</h2>
+{%endfor%}
+
+<form class="" action="http://127.0.0.1:8000/billing/" method="post">
+{% csrf_token%}
+<input type="submit" name="bill" value="Buy Now">
+</form>
+
+</div>
+
+{%endblock%}
+{% block login_block%}
+<a href="http://127.0.0.1:8000/accounts/logout/"><button type="button" name="button">Logout</button></a>
+
+{% endblock%}
+{%block title_name%}
+my_account
+{%endblock%}

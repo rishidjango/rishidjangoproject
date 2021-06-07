@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Sign up Form:</h1>
+    <form  method="post">
+      {%csrf_token%}
+      {{form.as_p}}
+      <input type="submit" name="done" value="Signup">
+    </form>
+  </body>
+</html>

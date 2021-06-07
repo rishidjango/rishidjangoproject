@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title_name%}Home{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/home.css" %}">
+  </head>
+  <body>
+  <div class="nav-bar">
+
+
+      <h1 id="logo">E-Commerce </h1>
+      <a href="http://127.0.0.1:8000/add_goods/"><button type="button" name="button">Add Item</button></a>
+
+
+      {% block login_block%}
+
+<a href="http://127.0.0.1:8000/home/"><button type="button" name="button">Home</button></a>
+
+
+      <a href="http://127.0.0.1:8000/accounts/login/"><button type="button" name="button">Login</button></a>
+      <a href="http://127.0.0.1:8000/signup/"><button type="button" name="button">Signup</button></a>
+      {% endblock %}
+    </div>
+    <div class="allinfo">
+{% block account_cart %}
+{% endblock %}
+    </div>
+{%for x in goods%}
+<div class="items">
+  <img src="http://127.0.0.1:8000/view_img/{{x.id}}/" alt="Image will be added soon">
+<div class="innerdiv">
+
+<h4>Name: {{x.gname}}</h4>
+  <h4>Price: {{x.gprice}}</h4>
+  <h4>Quantity : {{x.gquantity}}</h4>
+  <form action="http://127.0.0.1:8000/add_to_cart/{{x.id}}/" method="post">
+{%csrf_token%}
+  <input type="submit" id="atc" name="submit" value="Add to Cart">
+
+  </form>
+
+</div>
+
+</div>
+
+
+{%endfor%}
+
+
+
+  </body>
+</html>
